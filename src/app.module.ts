@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
+import { LinkModule } from './modules/link/link.module';
 
 @Module({
-  imports: [],
+  imports: [LinkModule],
   controllers: [],
   providers: [],
 })
