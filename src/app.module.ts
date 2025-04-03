@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import appConfig from './configs/app.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { HealthController } from './health/health.controller';
 
 @Module({
   imports: [
@@ -30,7 +31,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
     }),
     LinkModule,
   ],
-  controllers: [],
+  controllers: [HealthController],
   providers: [],
 })
 export class AppModule {}
