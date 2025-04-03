@@ -1,7 +1,8 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Res, UsePipes } from '@nestjs/common';
 import { LinkService } from './link.service';
 import { Response } from 'express';
 import { ConfigService } from '@nestjs/config';
+import { ValidateUrlPipe } from '../../common/pipes/validate-url.pipe';
 
 interface BaseResponse<T> {
   success: boolean,
@@ -18,6 +19,7 @@ export class LinkController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
+  @UsePipes(ValidateUrlPipe)
   async createShortLink(@Body('url') url: string): Promise<BaseResponse<{link: string}>>{
     const link = await this.linkService.createShortLink(url);
     return {
