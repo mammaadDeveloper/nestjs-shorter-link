@@ -3,13 +3,8 @@ import { LinkService } from './link.service';
 import { Response } from 'express';
 import { ConfigService } from '@nestjs/config';
 import { ValidateUrlPipe } from '../../common/pipes/validate-url.pipe';
+import { BaseResponse } from '../../shared/interfaces/response.interface';
 
-interface BaseResponse<T> {
-  success: boolean,
-  status: number,
-  message: string,
-  data?: T
-};
 @Controller('link')
 export class LinkController {
   constructor(
