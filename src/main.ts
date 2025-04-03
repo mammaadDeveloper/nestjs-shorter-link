@@ -15,6 +15,8 @@ async function bootstrap() {
     new GlobalExceptionFilter(),
   );
 
+  app.enableCors();
+
   await app.listen(process.env.PORT ?? 3000);
   const url = await app.getUrl();
   logger.log(`Application running on port ${url}`);
